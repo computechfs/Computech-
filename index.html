@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicio Técnico PC | Profesional & Rápido</title>
+    <style>
+        :root {             /* Color de la pagina */
+            --principal: #51abff;
+            --oscuro: #1a1a1a;
+            --gris: #f4f4f4;
+            --blanco: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: var(--oscuro);
+            background-color: var(--gris);
+        }
+
+       header {
+            /* Mantenemos tu nueva imagen y el degradado */
+            background: linear-gradient(rgba(10, 26, 42, 0.6), rgba(26, 26, 26, 0.7)), 
+                        url('procesador.jpg'); 
+            background-size: cover;       
+            background-position: center 30%; /* Esto centra la vista en el procesador */
+            background-attachment: scroll;   /* Mejor compatibilidad con celulares */
+            
+            color: var(--blanco);
+            padding: 7rem 1rem;           /* Bajamos de 8rem a 4rem para achicar la altura */
+            text-align: center;
+            border-bottom: 4px solid #00f2ff; 
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Ajuste para que el brillo del header también sea cian */
+        header::after {
+            background: rgba(0, 242, 255, 0.1); /* Brillo cian sutil */
+        }
+
+        /* Efecto de brillo que cruza el header */
+        header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(81, 171, 255, 0.05);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+
+       .logo {
+            width: 60px;                  /* Un pelín más chico */
+            position: absolute;
+            top: 15px;                    /* Bajamos un poquito la distancia del borde superior */
+            right: 30px;
+            filter: drop-shadow(0 0 10px #00f2ff);
+        }
+
+        header h1 {
+            font-size: 2.8rem;            /* Un poco más chico para que no sea gigante */
+            text-shadow: 0px 4px 10px rgba(0,0,0,0.9);
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1100px; /* Le damos más aire hacia los costados */
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente */
+            backdrop-filter: blur(10px);        /* Desenfoque del fondo */
+            -webkit-backdrop-filter: blur(10px); /* Para Safari */
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3); /* Bordecito sutil */
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.01); /* Se eleva un poquito más */
+            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+            border-color: var(--principal);
+        }
+
+        h2 { color: var(--principal); border-bottom: 2px solid var(--gris); padding-bottom: 0.5rem; }
+
+        .servicios {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Contenedor de botones flotantes */
+        .botones-flotantes {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        /* Estilo general para los botones redondos */
+        .boton-f {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s, filter 0.3s;
+        }
+
+        .boton-f:hover {
+            transform: scale(1.1);
+            filter: brightness(1.1);
+        }
+
+        /* Colores específicos */
+        .wsp { background-color: #25d366; }
+        .ig  {background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
+        .tk  { background-color: #000000; }
+
+        .redes-sociales {                   /* Redes sociales */
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 2rem;
+        }
+
+        .icon-link {                        
+            font-size: 2rem;
+            color: var(--oscuro);
+            transition: transform 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+
+        .icon-link:hover {
+            transform: scale(1.2);
+        }
+
+        .fa-instagram:hover {
+            /* Creamos el degradado de Instagram */
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+            /* Hacemos que el degradado solo se vea en el texto (el icono) */
+            -webkit-background-clip: text;
+            background-clip: text;
+            /* Transparentamos el color original para que se vea el fondo */
+            -webkit-text-fill-color: transparent;
+            display: inline-block; /* Necesario para que el degradado se aplique bien */
+        }
+        .fa-tiktok:hover { color: #000000; }
+
+        /* Contenedor que oculta lo que sale de los bordes */
+        .marcas-wrapper {
+            overflow: hidden;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            margin-top: 1.5rem;
+            white-space: nowrap;
+            position: relative;
+        }
+
+        /* La fila que realmente se mueve */
+        .marcas-mover {
+            display: inline-flex;
+            gap: 50px;
+            animation: slide 25s linear infinite; /* 20 segundos para una vuelta completa */
+        }
+
+        .marca-item {
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #888;
+            transition: all 0.3s ease;
+            cursor: default;
+            user-select: none;
+            display: inline-block;
+        }
+
+        .marca-item:hover {
+            color: var(--principal);
+            text-shadow: 0 0 10px var(--principal);
+        }
+
+        /* La lógica del movimiento infinito */
+        @keyframes slide {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
+        }
+
+        footer { text-align: center; padding: 2rem; font-size: 0.9rem; color: #666; }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            animation: aparecer 0.6s ease-out forwards;
+        }
+
+        /* Retrasamos la aparición de cada card para que entren una tras otra */
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.4s; }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">       
+</head>
+<body>
+
+<header>
+    <img src="logo.png" alt="CompuTech Logo" class="logo">
+
+    <h1>COMPUTECH FS</h1>
+    <p style="font-size: 1.5rem; font-weight: bold;">Servicio Técnico</p>
+    <p>Soluciones profesionales para tu hardware y software</p>
+</header>
+
+<div class="container">
+    <div class="card">
+        <h2>Servicio Técnico de PC & Notebooks</h2>
+        <p>Soluciones profesionales para optimizar el rendimiento de tu equipo.</p>
+        <div class="servicios">
+            <div>
+                <strong>🛠️ Hardware</strong>
+                <ul>
+                    <li>Limpieza profunda y cambio de pasta térmica.</li>
+                    <li>Armado de PC Gamer y oficina.</li>
+                    <li>Diagnóstico de componentes.</li>
+                    <li>Backups de datos.</li>
+                </ul>
+            </div>
+            <div>
+                <strong>💻 Software</strong>
+                <ul>
+                    <li>Instalación de Windows.</li>
+                    <li>Optimización para Gaming y productividad.</li>
+                    <li>Instalación de drivers y programas.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div style="margin-top: 2rem; border-top: 1px solid var(--gris); padding-top: 1rem;">
+            <p style="text-align: center; font-weight: bold; color: var(--oscuro);">Especialista en componentes:</p>
+            <div class="marcas-wrapper">
+                <div class="marcas-mover">
+                    <span class="marca-item">INTEL</span>
+                    <span class="marca-item">AMD</span>
+                    <span class="marca-item">NVIDIA</span>
+                    <span class="marca-item">ASUS</span>
+                    <span class="marca-item">GIGABYTE</span>
+                    <span class="marca-item">MSI</span>
+                    <span class="marca-item">CORSAIR</span>
+                    <span class="marca-item">KINGSTON</span>
+                    <span class="marca-item">INTEL</span>
+                    <span class="marca-item">AMD</span>
+                    <span class="marca-item">NVIDIA</span>
+                    <span class="marca-item">ASUS</span>
+                    <span class="marca-item">GIGABYTE</span>
+                    <span class="marca-item">MSI</span>
+                    <span class="marca-item">CORSAIR</span>
+                    <span class="marca-item">KINGSTON</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Servicio Técnico de Celulares</h2>
+        <p>Reparaciones de alta precisión y micro-soldadura para dispositivos móviles.</p>
+        <div class="servicios">
+            <div>
+                <strong>📱 Pantallas y Energía</strong>
+                <ul>
+                    <li>Cambio de Módulos y Displays.</li>
+                    <li>Reemplazo de Baterías.</li>
+                    <li>Cámaras, botones, microfonos, etc.</li>
+                </ul>
+            </div>
+            <div>
+                <strong>🔬 Micro-Electrónica</strong>
+                <ul>
+                    <li>Pines de Carga (Micro-USB / Tipo C).</li>
+                    <li>Reparación de placa base.</li>
+                    <li>Soldadura de precisión.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 style="text-align: center;">¿Por qué confiar en nosotros?</h2>
+        <div class="servicios" style="text-align: center; margin-top: 1rem;">
+            <div>
+                <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--principal);"></i>
+                <p><strong>Garantía Escrita</strong><br>Todos nuestros trabajos tienen respaldo.</p>
+            </div>
+            <div>
+                <i class="fas fa-microchip" style="font-size: 2rem; color: var(--principal);"></i>
+                <p><strong>Repuestos Originales</strong><br>Solo usamos componentes de primera calidad.</p>
+            </div>
+            <div>
+                <i class="fas fa-clock" style="font-size: 2rem; color: var(--principal);"></i>
+                <p><strong>Rapidez</strong><br>Diagnóstico en 24/48hs hábiles.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="botones-flotantes">
+    <a href="https://www.instagram.com/computech.fs/" target="_blank" class="boton-f ig">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.tiktok.com/@federicostavin" target="_blank" class="boton-f tk">
+        <i class="fab fa-tiktok"></i>
+    </a>
+    <a href="https://wa.me/541155654389?text=Hola!%20Quería%20consultarte%20por%20un%20servicio%20técnico." class="boton-f wsp" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
+
+</div> <footer>
+    <p>&copy; 2026 - Servicio Técnico Profesional - Buenos Aires, Argentina</p>
+</footer>
+
+</body>
+</html>
