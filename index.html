@@ -3,342 +3,1195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Servicio Técnico PC | Profesional & Rápido</title>
+    <title>CompuTech FS | Servicio Técnico de PC, Notebooks y Celulares en Buenos Aires</title>
+    <meta name="description" content="Servicio técnico profesional de PC, notebooks y celulares en Buenos Aires. Limpieza y pasta térmica, armado de PC gamer, instalación de Windows, cambio de pantallas, baterías y micro-soldadura. Diagnóstico en 24/48hs hábiles y garantía escrita.">
+    <meta name="theme-color" content="#0a1317">
+
+    <!-- Open Graph: vista previa al compartir el link en WhatsApp / redes -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CompuTech FS | Servicio Técnico">
+    <meta property="og:description" content="Reparación de PC, notebooks y celulares con diagnóstico en 24/48hs hábiles y garantía escrita.">
+    <meta property="og:image" content="procesador.jpg">
+    <meta property="og:locale" content="es_AR">
+
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ComputerRepair",
+        "name": "CompuTech FS",
+        "description": "Servicio técnico de PC, notebooks y celulares.",
+        "image": "procesador.jpg",
+        "logo": "logo.png",
+        "telephone": "+54 11 5565-4389",
+        "areaServed": "Buenos Aires, Argentina",
+        "address": { "@type": "PostalAddress", "addressRegion": "Buenos Aires", "addressCountry": "AR" },
+        "sameAs": [
+            "https://www.instagram.com/computech.fs/",
+            "https://www.tiktok.com/@federicostavin"
+        ]
+    }
+    </script>
+
     <style>
-        :root {             /* Color de la pagina */
-            --principal: #51abff;
-            --oscuro: #1a1a1a;
-            --gris: #f4f4f4;
-            --blanco: #ffffff;
+        :root {             /* Colores de la pagina (tomados del logo y la foto) */
+            --fondo: #0a1317;
+            --fondo-2: #0f1c21;
+            --superficie: #13242a;
+            --linea: rgba(148, 214, 222, 0.14);
+            --texto: #e4eef0;
+            --texto-suave: #8fa7ad;
+            --cian: #3cc8d6;
+            --cian-claro: #8ae6ee;
+            --verde: #5ccf9c;
+            --wsp: #25d366;
+
+            --f-titulo: 'Chakra Petch', sans-serif;
+            --f-texto: 'IBM Plex Sans', sans-serif;
+            --f-mono: 'JetBrains Mono', monospace;
+
+            --radio: 14px;
+            --ancho: 1180px;
         }
+
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: var(--f-texto);
             margin: 0;
-            line-height: 1.6;
-            color: var(--oscuro);
-            background-color: var(--gris);
+            line-height: 1.65;
+            color: var(--texto);
+            background-color: var(--fondo);
+            -webkit-font-smoothing: antialiased;
         }
 
-       header {
-            /* Mantenemos tu nueva imagen y el degradado */
-            background: linear-gradient(rgba(10, 26, 42, 0.6), rgba(26, 26, 26, 0.7)), 
-                        url('procesador.jpg'); 
-            background-size: cover;       
-            background-position: center 30%; /* Esto centra la vista en el procesador */
-            background-attachment: scroll;   /* Mejor compatibilidad con celulares */
-            
-            color: var(--blanco);
-            padding: 7rem 1rem;           /* Bajamos de 8rem a 4rem para achicar la altura */
-            text-align: center;
-            border-bottom: 4px solid #00f2ff; 
+        /* Grilla tipo placa de circuito, muy sutil, fija detrás de todo */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(var(--linea) 1px, transparent 1px),
+                linear-gradient(90deg, var(--linea) 1px, transparent 1px);
+            background-size: 64px 64px;
+            mask-image: radial-gradient(ellipse at 70% 0%, #000 0%, transparent 65%);
+            -webkit-mask-image: radial-gradient(ellipse at 70% 0%, #000 0%, transparent 65%);
+            opacity: 0.5;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        img { max-width: 100%; display: block; }
+        a { color: inherit; }
+
+        .contenedor { max-width: var(--ancho); margin: 0 auto; padding: 0 1.5rem; }
+
+        .etiqueta {                         /* Texto chico tipo "código" sobre los títulos */
+            font-family: var(--f-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--cian);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .etiqueta::before {
+            content: '';
+            width: 22px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1, h2, h3 { font-family: var(--f-titulo); line-height: 1.12; margin: 0; letter-spacing: -0.01em; }
+        h2 { font-size: clamp(2rem, 4vw, 2.9rem); margin-top: 0.8rem; }
+        .seccion-intro { color: var(--texto-suave); max-width: 560px; margin: 1rem 0 0; font-size: 1.05rem; }
+
+        section { padding: 6.5rem 0; }
+
+        /* ---------- Botones ---------- */
+        .boton {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.95rem 1.5rem;
+            border-radius: 10px;
+            font-family: var(--f-texto);
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+        }
+        .boton:active { transform: translateY(1px) scale(0.98); }
+        .boton:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+            outline: 2px solid var(--cian-claro);
+            outline-offset: 3px;
+        }
+        .boton-wsp { background: var(--wsp); color: #062b14; }
+        .boton-wsp:hover { background: #3be07a; transform: translateY(-2px); }
+        .boton-borde { border-color: var(--linea); color: var(--texto); background: rgba(255,255,255,0.02); }
+        .boton-borde:hover { border-color: var(--cian); color: var(--cian-claro); transform: translateY(-2px); }
+
+        /* ---------- Navegación ---------- */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 19, 23, 0.78);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--linea);
+        }
+        .nav-interior {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .marca {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            text-decoration: none;
+            font-family: var(--f-titulo);
+            font-weight: 700;
+            font-size: 1.2rem;
+            letter-spacing: 0.04em;
+        }
+        .marca img { width: 38px; height: 38px; }
+        .marca span { color: var(--cian); }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--texto-suave);
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--texto); }
+        .nav .boton { padding: 0.6rem 1.1rem; font-size: 0.9rem; }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: 1px solid var(--linea);
+            color: var(--texto);
+            border-radius: 8px;
+            width: 44px;
+            height: 44px;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        /* ---------- Hero ---------- */
+        .hero { padding: 5rem 0 6rem; position: relative; }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .hero h1 {
+            font-size: clamp(2.6rem, 5.6vw, 4.4rem);
+            margin-top: 1.2rem;
+        }
+        .hero h1 em {
+            font-style: normal;
+            color: var(--cian);
+        }
+        .hero-texto {
+            color: var(--texto-suave);
+            font-size: 1.15rem;
+            max-width: 520px;
+            margin: 1.5rem 0 2.2rem;
+        }
+        .hero-acciones { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+
+        .hero-datos {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.2rem;
+            margin-top: 3rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid var(--linea);
+        }
+        .dato strong {
+            display: block;
+            font-family: var(--f-titulo);
+            font-size: 1.6rem;
+            color: var(--texto);
+        }
+        .dato span { font-size: 0.88rem; color: var(--texto-suave); }
+
+        .hero-imagen { position: relative; }
+        .hero-imagen .marco {
             position: relative;
+            border-radius: var(--radio);
             overflow: hidden;
+            border: 1px solid var(--linea);
+            aspect-ratio: 4 / 3.4;
         }
-
-        /* Ajuste para que el brillo del header también sea cian */
-        header::after {
-            background: rgba(0, 242, 255, 0.1); /* Brillo cian sutil */
+        .hero-imagen .marco img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: 60% 50%;
+            transform: scale(1.04);
         }
-
-        /* Efecto de brillo que cruza el header */
-        header::after {
+        .hero-imagen .marco::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: rgba(81, 171, 255, 0.05);
-            transform: rotate(30deg);
-            pointer-events: none;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 50%, rgba(10,19,23,0.85) 100%);
         }
+        /* Esquinas tipo visor */
+        .esquina { position: absolute; width: 26px; height: 26px; border-color: var(--cian); border-style: solid; z-index: 2; }
+        .esquina.a { top: -10px; left: -10px; border-width: 2px 0 0 2px; }
+        .esquina.b { top: -10px; right: -10px; border-width: 2px 2px 0 0; }
+        .esquina.c { bottom: -10px; left: -10px; border-width: 0 0 2px 2px; }
+        .esquina.d { bottom: -10px; right: -10px; border-width: 0 2px 2px 0; }
 
-       .logo {
-            width: 60px;                  /* Un pelín más chico */
+        .ficha {
             position: absolute;
-            top: 15px;                    /* Bajamos un poquito la distancia del borde superior */
-            right: 30px;
-            filter: drop-shadow(0 0 10px #00f2ff);
+            left: -2.5rem;
+            bottom: 2rem;
+            z-index: 3;
+            background: rgba(15, 28, 33, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--linea);
+            border-radius: 12px;
+            padding: 1rem 1.2rem;
+            font-family: var(--f-mono);
+            font-size: 0.8rem;
+            min-width: 250px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+        }
+        .ficha-titulo { color: var(--texto-suave); margin-bottom: 0.6rem; display: flex; justify-content: space-between; }
+        .ficha-fila { display: flex; justify-content: space-between; gap: 1rem; padding: 0.25rem 0; }
+        .ficha-fila span:first-child { color: var(--texto-suave); }
+        .ok { color: var(--verde); }
+        .punto {
+            display: inline-block;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--verde);
+            margin-right: 6px;
+            animation: latido 2s ease-in-out infinite;
+        }
+        @keyframes latido { 50% { opacity: 0.3; } }
+
+        /* ---------- Marcas ---------- */
+        .marcas {
+            border-top: 1px solid var(--linea);
+            border-bottom: 1px solid var(--linea);
+            background: var(--fondo-2);
+            padding: 1.6rem 0;
+        }
+        .marcas-interior { display: flex; align-items: center; gap: 2.5rem; }
+        .marcas-label {
+            flex-shrink: 0;
+            font-family: var(--f-mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--texto-suave);
+        }
+        .marcas-wrapper {
+            overflow: hidden;
+            white-space: nowrap;
+            mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+        }
+        .marcas-mover {
+            display: inline-flex;
+            gap: 3.5rem;
+            padding-right: 3.5rem;
+            animation: deslizar 32s linear infinite;
+        }
+        .marcas-wrapper:hover .marcas-mover { animation-play-state: paused; }
+        .marca-item {
+            font-family: var(--f-titulo);
+            font-weight: 600;
+            font-size: 1.25rem;
+            letter-spacing: 0.08em;
+            color: #4f666c;
+            transition: color 0.3s ease;
+            user-select: none;
+        }
+        .marca-item:hover { color: var(--cian-claro); }
+        @keyframes deslizar {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
         }
 
-        header h1 {
-            font-size: 2.8rem;            /* Un poco más chico para que no sea gigante */
-            text-shadow: 0px 4px 10px rgba(0,0,0,0.9);
-            margin: 0;
+        /* ---------- Servicios ---------- */
+        .servicios-cabecera {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 3.5rem;
         }
-
-        .container {
-            max-width: 1100px; /* Le damos más aire hacia los costados */
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente */
-            backdrop-filter: blur(10px);        /* Desenfoque del fondo */
-            -webkit-backdrop-filter: blur(10px); /* Para Safari */
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.3); /* Bordecito sutil */
-            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-10px) scale(1.01); /* Se eleva un poquito más */
-            box-shadow: 0 12px 20px rgba(0,0,0,0.15);
-            border-color: var(--principal);
-        }
-
-        h2 { color: var(--principal); border-bottom: 2px solid var(--gris); padding-bottom: 0.5rem; }
-
-        .servicios {
+        .servicio-bloque {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 320px 1fr;
+            gap: 3rem;
+            padding: 3rem 0;
+            border-top: 1px solid var(--linea);
+        }
+        .servicio-bloque:last-child { border-bottom: 1px solid var(--linea); }
+        .servicio-titulo .numero {
+            font-family: var(--f-mono);
+            color: var(--cian);
+            font-size: 0.85rem;
+        }
+        .servicio-titulo h3 { font-size: 1.8rem; margin: 0.6rem 0 0.8rem; }
+        .servicio-titulo p { color: var(--texto-suave); margin: 0; }
+
+        .servicio-items {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
         }
-
-        /* Contenedor de botones flotantes */
-        .botones-flotantes {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            z-index: 1000;
+        .item {
+            background: var(--superficie);
+            border: 1px solid var(--linea);
+            border-radius: var(--radio);
+            padding: 1.6rem;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .item:hover { border-color: rgba(60, 200, 214, 0.5); transform: translateY(-4px); }
+        .item-cabeza { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem; }
+        .item-icono {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            background: rgba(60, 200, 214, 0.1);
+            color: var(--cian);
+            font-size: 1.05rem;
+        }
+        .item h4 { font-family: var(--f-titulo); font-size: 1.15rem; margin: 0; }
+        .item ul { list-style: none; padding: 0; margin: 0; }
+        .item li {
+            position: relative;
+            padding: 0.45rem 0 0.45rem 1.4rem;
+            color: var(--texto-suave);
+            border-bottom: 1px dashed rgba(148, 214, 222, 0.08);
+        }
+        .item li:last-child { border-bottom: none; }
+        .item li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 1.05rem;
+            width: 7px;
+            height: 7px;
+            border: 1.5px solid var(--verde);
+            border-radius: 2px;
         }
 
-        /* Estilo general para los botones redondos */
-        .boton-f {
+        /* ---------- Proceso ---------- */
+        .proceso { background: var(--fondo-2); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+        .pasos {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3.5rem;
+            counter-reset: paso;
+            position: relative;
+        }
+        .paso { position: relative; padding-top: 2.6rem; }
+        .paso::before {
+            counter-increment: paso;
+            content: '0' counter(paso);
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-family: var(--f-mono);
+            font-size: 0.85rem;
+            color: var(--fondo);
+            background: var(--cian);
+            padding: 0.15rem 0.55rem;
+            border-radius: 5px;
+        }
+        .paso::after {               /* La "pista" que une los pasos */
+            content: '';
+            position: absolute;
+            top: 0.75rem;
+            left: 3.4rem;
+            right: -1.5rem;
+            height: 1px;
+            background: linear-gradient(90deg, var(--cian), transparent);
+            opacity: 0.4;
+        }
+        .paso:last-child::after { display: none; }
+        .paso h3 { font-size: 1.25rem; margin-bottom: 0.6rem; }
+        .paso p { color: var(--texto-suave); margin: 0; font-size: 0.97rem; }
+
+        /* ---------- Confianza ---------- */
+        .confianza-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.25fr;
+            gap: 4rem;
+            align-items: start;
+        }
+        .garantias { display: grid; gap: 1rem; }
+        .garantia {
+            display: grid;
+            grid-template-columns: 54px 1fr;
+            gap: 1.2rem;
+            align-items: start;
+            padding: 1.5rem;
+            border-radius: var(--radio);
+            border: 1px solid var(--linea);
+            background: linear-gradient(135deg, var(--superficie), transparent);
+            transition: border-color 0.3s ease;
+        }
+        .garantia:hover { border-color: rgba(92, 207, 156, 0.45); }
+        .garantia i {
+            width: 54px;
+            height: 54px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            font-size: 1.3rem;
+            color: var(--verde);
+            background: rgba(92, 207, 156, 0.1);
+        }
+        .garantia h3 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+        .garantia p { margin: 0; color: var(--texto-suave); }
+
+        /* ---------- Preguntas frecuentes ---------- */
+        .faq-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem; }
+        .faq-lista { border-top: 1px solid var(--linea); }
+        details { border-bottom: 1px solid var(--linea); }
+        summary {
+            list-style: none;
+            cursor: pointer;
+            padding: 1.4rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            font-family: var(--f-titulo);
+            font-weight: 600;
+            font-size: 1.15rem;
+            transition: color 0.2s;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary:hover { color: var(--cian-claro); }
+        summary::after {
+            content: '+';
+            font-family: var(--f-mono);
+            font-size: 1.3rem;
+            color: var(--cian);
+            transition: transform 0.3s ease;
+        }
+        details[open] summary::after { transform: rotate(45deg); }
+        details p { margin: 0 0 1.4rem; color: var(--texto-suave); max-width: 620px; }
+
+        /* ---------- Contacto ---------- */
+        .contacto { padding-bottom: 7rem; }
+        .contacto-caja {
+            display: grid;
+            grid-template-columns: 1fr 1.15fr;
+            border: 1px solid var(--linea);
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--fondo-2);
+        }
+        .contacto-info {
+            padding: 3rem;
+            background:
+                radial-gradient(circle at 0% 100%, rgba(60, 200, 214, 0.16), transparent 60%),
+                var(--superficie);
+            border-right: 1px solid var(--linea);
+            display: flex;
+            flex-direction: column;
+        }
+        .contacto-info p { color: var(--texto-suave); }
+        .canales { display: grid; gap: 0.8rem; margin: 2rem 0; }
+        .canal {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.1rem;
+            border-radius: 12px;
+            border: 1px solid var(--linea);
+            text-decoration: none;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .canal:hover { border-color: var(--cian); transform: translateX(4px); }
+        .canal i { font-size: 1.35rem; width: 28px; text-align: center; }
+        .canal .fa-whatsapp { color: var(--wsp); }
+        .canal .fa-instagram { color: #e1306c; }
+        .canal small { display: block; color: var(--texto-suave); font-size: 0.82rem; }
+        .canal strong { font-weight: 600; }
+        .zona {
+            margin-top: auto;
+            font-family: var(--f-mono);
+            font-size: 0.82rem;
+            color: var(--texto-suave);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .zona i { color: var(--cian); }
+
+        .formulario { padding: 3rem; }
+        .formulario h3 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+        .formulario > p { color: var(--texto-suave); margin: 0 0 1.8rem; }
+        .campos { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .campo { display: flex; flex-direction: column; gap: 0.4rem; }
+        .campo.ancho { grid-column: 1 / -1; }
+        .campo label { font-size: 0.85rem; font-weight: 500; color: var(--texto-suave); }
+        .campo input, .campo select, .campo textarea {
+            font: inherit;
+            color: var(--texto);
+            background: var(--fondo);
+            border: 1px solid var(--linea);
+            border-radius: 10px;
+            padding: 0.85rem 1rem;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+        .campo select { appearance: none; -webkit-appearance: none; cursor: pointer;
+            background-image: linear-gradient(45deg, transparent 50%, var(--cian) 50%), linear-gradient(135deg, var(--cian) 50%, transparent 50%);
+            background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%;
+            background-size: 5px 5px;
+            background-repeat: no-repeat;
+        }
+        .campo textarea { resize: vertical; min-height: 120px; }
+        .campo input::placeholder, .campo textarea::placeholder { color: #536a70; }
+        .campo input:hover, .campo select:hover, .campo textarea:hover { border-color: rgba(148, 214, 222, 0.3); }
+        .campo input:focus, .campo select:focus, .campo textarea:focus { border-color: var(--cian); outline: none; background: #0c171b; }
+        .campo.error input, .campo.error textarea, .campo.error select { border-color: #e2726b; }
+        .campo .msj-error { font-size: 0.8rem; color: #e2726b; display: none; }
+        .campo.error .msj-error { display: block; }
+        .oculto { display: none; }
+
+        .formulario .boton {
+            margin-top: 1.4rem;
+            width: 100%;
+            justify-content: center;
+            background: var(--cian);
+            color: #04262a;
+        }
+        .formulario .boton:hover { background: var(--cian-claro); }
+        .formulario .boton[disabled] { opacity: 0.6; cursor: wait; }
+        .estado-form {
+            margin-top: 1rem;
+            padding: 0.9rem 1rem;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            display: none;
+        }
+        .estado-form.exito { display: block; background: rgba(92, 207, 156, 0.12); color: var(--verde); border: 1px solid rgba(92, 207, 156, 0.35); }
+        .estado-form.fallo { display: block; background: rgba(226, 114, 107, 0.1); color: #f0a29d; border: 1px solid rgba(226, 114, 107, 0.35); }
+
+        /* ---------- Footer ---------- */
+        footer { border-top: 1px solid var(--linea); padding: 3rem 0 2rem; background: var(--fondo-2); }
+        .footer-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        .footer-links { display: flex; gap: 1.6rem; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+        .footer-links a { text-decoration: none; color: var(--texto-suave); font-size: 0.92rem; }
+        .footer-links a:hover { color: var(--texto); }
+        .redes { display: flex; gap: 0.7rem; }
+        .redes a {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            border: 1px solid var(--linea);
+            text-decoration: none;
+            color: var(--texto-suave);
+            transition: color 0.2s, border-color 0.2s;
+        }
+        .redes a:hover { color: var(--cian-claro); border-color: var(--cian); }
+        .footer-base {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--linea);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            font-size: 0.85rem;
+            color: var(--texto-suave);
+        }
+
+        /* ---------- Botón flotante de WhatsApp ---------- */
+        .wsp-flotante {
+            position: fixed;
+            bottom: 22px;
+            right: 22px;
+            z-index: 200;
             width: 60px;
             height: 60px;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
+            display: grid;
+            place-items: center;
+            background: var(--wsp);
+            color: #fff;
+            font-size: 1.9rem;
             text-decoration: none;
-            font-size: 1.8rem;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            transition: transform 0.3s, filter 0.3s;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.25s ease;
+        }
+        .wsp-flotante:hover { transform: scale(1.08); }
+        .wsp-flotante::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            border: 2px solid var(--wsp);
+            animation: onda 2.4s ease-out infinite;
+        }
+        @keyframes onda {
+            from { transform: scale(1); opacity: 0.7; }
+            to { transform: scale(1.6); opacity: 0; }
         }
 
-        .boton-f:hover {
-            transform: scale(1.1);
-            filter: brightness(1.1);
-        }
-
-        /* Colores específicos */
-        .wsp { background-color: #25d366; }
-        .ig  {background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
-        .tk  { background-color: #000000; }
-
-        .redes-sociales {                   /* Redes sociales */
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 2rem;
-        }
-
-        .icon-link {                        
-            font-size: 2rem;
-            color: var(--oscuro);
-            transition: transform 0.3s, color 0.3s;
-            text-decoration: none;
-        }
-
-        .icon-link:hover {
-            transform: scale(1.2);
-        }
-
-        .fa-instagram:hover {
-            /* Creamos el degradado de Instagram */
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            /* Hacemos que el degradado solo se vea en el texto (el icono) */
-            -webkit-background-clip: text;
-            background-clip: text;
-            /* Transparentamos el color original para que se vea el fondo */
-            -webkit-text-fill-color: transparent;
-            display: inline-block; /* Necesario para que el degradado se aplique bien */
-        }
-        .fa-tiktok:hover { color: #000000; }
-
-        /* Contenedor que oculta lo que sale de los bordes */
-        .marcas-wrapper {
-            overflow: hidden;
-            padding: 20px 0;
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 10px;
-            margin-top: 1.5rem;
-            white-space: nowrap;
-            position: relative;
-        }
-
-        /* La fila que realmente se mueve */
-        .marcas-mover {
-            display: inline-flex;
-            gap: 50px;
-            animation: slide 25s linear infinite; /* 20 segundos para una vuelta completa */
-        }
-
-        .marca-item {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #888;
-            transition: all 0.3s ease;
-            cursor: default;
-            user-select: none;
-            display: inline-block;
-        }
-
-        .marca-item:hover {
-            color: var(--principal);
-            text-shadow: 0 0 10px var(--principal);
-        }
-
-        /* La lógica del movimiento infinito */
-        @keyframes slide {
-            from { transform: translateX(-50%); }
-            to { transform: translateX(0); }
-        }
-
-        footer { text-align: center; padding: 2rem; font-size: 0.9rem; color: #666; }
-
+        /* ---------- Animaciones de entrada ---------- */
         @keyframes aparecer {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(24px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .hero .entra { opacity: 0; animation: aparecer 0.8s cubic-bezier(.2,.7,.2,1) forwards; }
+        .hero .entra:nth-child(2) { animation-delay: 0.1s; }
+        .hero .entra:nth-child(3) { animation-delay: 0.2s; }
+        .hero .entra:nth-child(4) { animation-delay: 0.3s; }
+        .hero .entra:nth-child(5) { animation-delay: 0.4s; }
+        .hero-imagen.entra { animation-delay: 0.25s; }
 
-        .card {
-            animation: aparecer 0.6s ease-out forwards;
+        .revelar { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(.2,.7,.2,1); }
+        .revelar.visible { opacity: 1; transform: none; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
+            .hero .entra, .revelar { opacity: 1; transform: none; }
+            html { scroll-behavior: auto; }
         }
 
-        /* Retrasamos la aparición de cada card para que entren una tras otra */
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.4s; }
+        /* ---------- Responsive ---------- */
+        @media (max-width: 980px) {
+            .hero-grid, .confianza-grid, .faq-grid, .contacto-caja { grid-template-columns: 1fr; }
+            .hero-grid { gap: 3.5rem; }
+            .ficha { left: 1rem; }
+            .servicio-bloque { grid-template-columns: 1fr; gap: 1.8rem; }
+            .pasos { grid-template-columns: repeat(2, 1fr); row-gap: 2.5rem; }
+            .paso:nth-child(2)::after { display: none; }
+            .contacto-info { border-right: none; border-bottom: 1px solid var(--linea); }
+            .confianza-grid, .faq-grid { gap: 2.5rem; }
+        }
 
+        @media (max-width: 760px) {
+            section { padding: 4.5rem 0; }
+            .nav-toggle { display: grid; place-items: center; }
+            .nav-links {
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0;
+                padding: 0.5rem 1.5rem 1.5rem;
+                background: var(--fondo);
+                border-bottom: 1px solid var(--linea);
+                display: none;
+            }
+            .nav-links.abierto { display: flex; }
+            .nav-links li a { display: block; padding: 0.9rem 0; border-bottom: 1px solid var(--linea); }
+            .nav-links li:last-child a { border-bottom: none; margin-top: 1rem; justify-content: center; }
+            .hero { padding-top: 3rem; }
+            .marcas-interior { flex-direction: column; gap: 1rem; align-items: flex-start; }
+            .marcas-wrapper { width: 100%; }
+            .servicio-items, .campos { grid-template-columns: 1fr; }
+            .pasos { grid-template-columns: 1fr; }
+            .paso::after { display: none; }
+            .contacto-info, .formulario { padding: 2rem 1.5rem; }
+            .ficha { position: relative; left: 0; bottom: 0; margin-top: -2rem; margin-inline: 1rem; }
+        }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">       
 </head>
 <body>
 
-<header>
-    <img src="logo.png" alt="CompuTech Logo" class="logo">
+<!-- ================= NAVEGACIÓN ================= -->
+<nav class="nav" aria-label="Principal">
+    <div class="contenedor nav-interior">
+        <a href="#inicio" class="marca">
+            <img src="logo.png" alt="" width="38" height="38">
+            COMPUTECH <span>FS</span>
+        </a>
+        <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links" id="menu">
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#proceso">Cómo trabajamos</a></li>
+            <li><a href="#garantias">Garantía</a></li>
+            <li><a href="#preguntas">Preguntas</a></li>
+            <li><a href="#contacto" class="boton boton-borde">Pedir presupuesto</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <h1>COMPUTECH FS</h1>
-    <p style="font-size: 1.5rem; font-weight: bold;">Servicio Técnico</p>
-    <p>Soluciones profesionales para tu hardware y software</p>
-</header>
+<main id="inicio">
 
-<div class="container">
-    <div class="card">
-        <h2>Servicio Técnico de PC & Notebooks</h2>
-        <p>Soluciones profesionales para optimizar el rendimiento de tu equipo.</p>
-        <div class="servicios">
-            <div>
-                <strong>🛠️ Hardware</strong>
-                <ul>
-                    <li>Limpieza profunda y cambio de pasta térmica.</li>
-                    <li>Armado de PC Gamer y oficina.</li>
-                    <li>Diagnóstico de componentes.</li>
-                    <li>Backups de datos.</li>
-                </ul>
+<!-- ================= HERO ================= -->
+<header class="hero">
+    <div class="contenedor hero-grid">
+        <div>
+            <span class="etiqueta entra">Servicio técnico · Buenos Aires</span>
+            <h1 class="entra">Tu PC, notebook o celular, <em>reparado bien</em> y con garantía.</h1>
+            <p class="hero-texto entra">Diagnóstico claro, presupuesto antes de tocar nada y repuestos de primera calidad. Hardware, software y micro-electrónica en un solo lugar.</p>
+            <div class="hero-acciones entra">
+                <a href="https://wa.me/541155654389?text=Hola!%20Quería%20consultarte%20por%20un%20servicio%20técnico." target="_blank" rel="noopener" class="boton boton-wsp">
+                    <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                </a>
+                <a href="#servicios" class="boton boton-borde">Ver servicios <i class="fas fa-arrow-down"></i></a>
             </div>
-            <div>
-                <strong>💻 Software</strong>
-                <ul>
-                    <li>Instalación de Windows.</li>
-                    <li>Optimización para Gaming y productividad.</li>
-                    <li>Instalación de drivers y programas.</li>
-                </ul>
+            <div class="hero-datos entra">
+                <div class="dato"><strong>24/48hs</strong><span>Diagnóstico hábil</span></div>
+                <div class="dato"><strong>Escrita</strong><span>Garantía en cada trabajo</span></div>
+                <div class="dato"><strong>PC · Cel</strong><span>Hardware y software</span></div>
             </div>
         </div>
 
-        <div style="margin-top: 2rem; border-top: 1px solid var(--gris); padding-top: 1rem;">
-            <p style="text-align: center; font-weight: bold; color: var(--oscuro);">Especialista en componentes:</p>
-            <div class="marcas-wrapper">
-                <div class="marcas-mover">
-                    <span class="marca-item">INTEL</span>
-                    <span class="marca-item">AMD</span>
-                    <span class="marca-item">NVIDIA</span>
-                    <span class="marca-item">ASUS</span>
-                    <span class="marca-item">GIGABYTE</span>
-                    <span class="marca-item">MSI</span>
-                    <span class="marca-item">CORSAIR</span>
-                    <span class="marca-item">KINGSTON</span>
-                    <span class="marca-item">INTEL</span>
-                    <span class="marca-item">AMD</span>
-                    <span class="marca-item">NVIDIA</span>
-                    <span class="marca-item">ASUS</span>
-                    <span class="marca-item">GIGABYTE</span>
-                    <span class="marca-item">MSI</span>
-                    <span class="marca-item">CORSAIR</span>
-                    <span class="marca-item">KINGSTON</span>
+        <div class="hero-imagen entra">
+            <span class="esquina a"></span><span class="esquina b"></span>
+            <span class="esquina c"></span><span class="esquina d"></span>
+            <div class="marco">
+                <img src="procesador.jpg" alt="Primer plano de un procesador sobre una placa madre" width="612" height="344">
+            </div>
+            <div class="ficha" aria-hidden="true">
+                <div class="ficha-titulo"><span>// ORDEN DE SERVICIO</span><span><span class="punto"></span>en curso</span></div>
+                <div class="ficha-fila"><span>Limpieza interna</span><span class="ok">OK</span></div>
+                <div class="ficha-fila"><span>Pasta térmica</span><span class="ok">OK</span></div>
+                <div class="ficha-fila"><span>Test de temperatura</span><span class="ok">OK</span></div>
+                <div class="ficha-fila"><span>Garantía</span><span class="ok">Emitida</span></div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- ================= MARCAS ================= -->
+<div class="marcas">
+    <div class="contenedor marcas-interior">
+        <span class="marcas-label">Especialista en</span>
+        <div class="marcas-wrapper">
+            <div class="marcas-mover">
+                <span class="marca-item">INTEL</span>
+                <span class="marca-item">AMD</span>
+                <span class="marca-item">NVIDIA</span>
+                <span class="marca-item">ASUS</span>
+                <span class="marca-item">GIGABYTE</span>
+                <span class="marca-item">MSI</span>
+                <span class="marca-item">CORSAIR</span>
+                <span class="marca-item">KINGSTON</span>
+                <!-- Repetido para que el movimiento sea infinito -->
+                <span class="marca-item" aria-hidden="true">INTEL</span>
+                <span class="marca-item" aria-hidden="true">AMD</span>
+                <span class="marca-item" aria-hidden="true">NVIDIA</span>
+                <span class="marca-item" aria-hidden="true">ASUS</span>
+                <span class="marca-item" aria-hidden="true">GIGABYTE</span>
+                <span class="marca-item" aria-hidden="true">MSI</span>
+                <span class="marca-item" aria-hidden="true">CORSAIR</span>
+                <span class="marca-item" aria-hidden="true">KINGSTON</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios">
+    <div class="contenedor">
+        <div class="servicios-cabecera revelar">
+            <div>
+                <span class="etiqueta">Servicios</span>
+                <h2>Qué podemos hacer por tu equipo</h2>
+            </div>
+            <p class="seccion-intro">Desde un mantenimiento preventivo hasta una reparación de placa. Si no lo ves en la lista, consultanos igual.</p>
+        </div>
+
+        <div class="servicio-bloque revelar">
+            <div class="servicio-titulo">
+                <span class="numero">01 /</span>
+                <h3>PC &amp; Notebooks</h3>
+                <p>Soluciones profesionales para optimizar el rendimiento y alargar la vida útil de tu equipo.</p>
+            </div>
+            <div class="servicio-items">
+                <div class="item">
+                    <div class="item-cabeza">
+                        <span class="item-icono"><i class="fas fa-screwdriver-wrench"></i></span>
+                        <h4>Hardware</h4>
+                    </div>
+                    <ul>
+                        <li>Limpieza profunda y cambio de pasta térmica.</li>
+                        <li>Armado de PC Gamer y de oficina.</li>
+                        <li>Diagnóstico de componentes.</li>
+                        <li>Backups y resguardo de datos.</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <div class="item-cabeza">
+                        <span class="item-icono"><i class="fas fa-laptop-code"></i></span>
+                        <h4>Software</h4>
+                    </div>
+                    <ul>
+                        <li>Instalación de Windows.</li>
+                        <li>Optimización para gaming y productividad.</li>
+                        <li>Instalación de drivers y programas.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="servicio-bloque revelar">
+            <div class="servicio-titulo">
+                <span class="numero">02 /</span>
+                <h3>Celulares</h3>
+                <p>Reparaciones de alta precisión y micro-soldadura para dispositivos móviles.</p>
+            </div>
+            <div class="servicio-items">
+                <div class="item">
+                    <div class="item-cabeza">
+                        <span class="item-icono"><i class="fas fa-mobile-screen"></i></span>
+                        <h4>Pantallas y energía</h4>
+                    </div>
+                    <ul>
+                        <li>Cambio de módulos y displays.</li>
+                        <li>Reemplazo de baterías.</li>
+                        <li>Cámaras, botones, micrófonos y más.</li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <div class="item-cabeza">
+                        <span class="item-icono"><i class="fas fa-microscope"></i></span>
+                        <h4>Micro-electrónica</h4>
+                    </div>
+                    <ul>
+                        <li>Pines de carga (Micro-USB / Tipo C).</li>
+                        <li>Reparación de placa base.</li>
+                        <li>Soldadura de precisión.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="card">
-        <h2>Servicio Técnico de Celulares</h2>
-        <p>Reparaciones de alta precisión y micro-soldadura para dispositivos móviles.</p>
-        <div class="servicios">
-            <div>
-                <strong>📱 Pantallas y Energía</strong>
-                <ul>
-                    <li>Cambio de Módulos y Displays.</li>
-                    <li>Reemplazo de Baterías.</li>
-                    <li>Cámaras, botones, microfonos, etc.</li>
-                </ul>
+<!-- ================= PROCESO ================= -->
+<section id="proceso" class="proceso">
+    <div class="contenedor">
+        <div class="revelar">
+            <span class="etiqueta">Cómo trabajamos</span>
+            <h2>Sin sorpresas, de principio a fin</h2>
+            <p class="seccion-intro">Sabés en todo momento qué tiene tu equipo, cuánto cuesta y cuándo está listo.</p>
+        </div>
+        <div class="pasos">
+            <div class="paso revelar">
+                <h3>Consulta</h3>
+                <p>Nos escribís por WhatsApp o por el formulario y nos contás qué le pasa a tu equipo.</p>
             </div>
-            <div>
-                <strong>🔬 Micro-Electrónica</strong>
-                <ul>
-                    <li>Pines de Carga (Micro-USB / Tipo C).</li>
-                    <li>Reparación de placa base.</li>
-                    <li>Soldadura de precisión.</li>
-                </ul>
+            <div class="paso revelar">
+                <h3>Diagnóstico</h3>
+                <p>Revisamos el equipo y en 24/48hs hábiles te decimos exactamente cuál es la falla.</p>
+            </div>
+            <div class="paso revelar">
+                <h3>Presupuesto</h3>
+                <p>Te pasamos el costo antes de hacer cualquier trabajo. Vos decidís si seguimos.</p>
+            </div>
+            <div class="paso revelar">
+                <h3>Entrega con garantía</h3>
+                <p>Reparamos, probamos y te devolvemos el equipo con garantía escrita.</p>
             </div>
         </div>
     </div>
+</section>
 
-    <div class="card">
-        <h2 style="text-align: center;">¿Por qué confiar en nosotros?</h2>
-        <div class="servicios" style="text-align: center; margin-top: 1rem;">
-            <div>
-                <i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--principal);"></i>
-                <p><strong>Garantía Escrita</strong><br>Todos nuestros trabajos tienen respaldo.</p>
+<!-- ================= CONFIANZA ================= -->
+<section id="garantias">
+    <div class="contenedor confianza-grid">
+        <div class="revelar">
+            <span class="etiqueta">Por qué elegirnos</span>
+            <h2>¿Por qué confiar en nosotros?</h2>
+            <p class="seccion-intro">Tu equipo guarda tu trabajo, tus fotos y tus datos. Lo tratamos con ese cuidado.</p>
+        </div>
+        <div class="garantias">
+            <div class="garantia revelar">
+                <i class="fas fa-shield-halved"></i>
+                <div>
+                    <h3>Garantía escrita</h3>
+                    <p>Todos nuestros trabajos tienen respaldo por escrito.</p>
+                </div>
             </div>
-            <div>
-                <i class="fas fa-microchip" style="font-size: 2rem; color: var(--principal);"></i>
-                <p><strong>Repuestos Originales</strong><br>Solo usamos componentes de primera calidad.</p>
+            <div class="garantia revelar">
+                <i class="fas fa-microchip"></i>
+                <div>
+                    <h3>Repuestos originales</h3>
+                    <p>Solo usamos componentes de primera calidad.</p>
+                </div>
             </div>
-            <div>
-                <i class="fas fa-clock" style="font-size: 2rem; color: var(--principal);"></i>
-                <p><strong>Rapidez</strong><br>Diagnóstico en 24/48hs hábiles.</p>
+            <div class="garantia revelar">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <h3>Rapidez</h3>
+                    <p>Diagnóstico en 24/48hs hábiles para que no te quedes sin tu equipo.</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="botones-flotantes">
-    <a href="https://www.instagram.com/computech.fs/" target="_blank" class="boton-f ig">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.tiktok.com/@federicostavin" target="_blank" class="boton-f tk">
-        <i class="fab fa-tiktok"></i>
-    </a>
-    <a href="https://wa.me/541155654389?text=Hola!%20Quería%20consultarte%20por%20un%20servicio%20técnico." class="boton-f wsp" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-</div>
+<!-- ================= PREGUNTAS FRECUENTES ================= -->
+<section id="preguntas" class="proceso">
+    <div class="contenedor faq-grid">
+        <div class="revelar">
+            <span class="etiqueta">Preguntas frecuentes</span>
+            <h2>Lo que más nos consultan</h2>
+            <p class="seccion-intro">¿Tenés otra duda? Escribinos y te respondemos.</p>
+        </div>
+        <div class="faq-lista revelar">
+            <details>
+                <summary>¿Cuánto tarda el diagnóstico?</summary>
+                <p>El diagnóstico se realiza en 24 a 48 horas hábiles. Apenas lo tenemos, te contactamos con el detalle de la falla y el presupuesto.</p>
+            </details>
+            <details>
+                <summary>¿El trabajo tiene garantía?</summary>
+                <p>Sí. Todos los trabajos se entregan con garantía escrita, para que tengas respaldo ante cualquier inconveniente.</p>
+            </details>
+            <details>
+                <summary>¿Me pasan el presupuesto antes de reparar?</summary>
+                <p>Siempre. No realizamos ningún trabajo sin que hayas aprobado el presupuesto primero.</p>
+            </details>
+            <details>
+                <summary>¿Qué pasa con mis archivos y datos?</summary>
+                <p>Si el trabajo lo requiere (por ejemplo, una instalación de Windows), podemos hacer un backup de tus datos antes de empezar. Consultanos al dejar el equipo.</p>
+            </details>
+            <details>
+                <summary>¿Arman PC a medida?</summary>
+                <p>Sí, armamos PC gamer y de oficina. Contanos qué uso le vas a dar y tu presupuesto, y te ayudamos a elegir los componentes.</p>
+            </details>
+        </div>
+    </div>
+</section>
 
-</div> <footer>
-    <p>&copy; 2026 - Servicio Técnico Profesional - Buenos Aires, Argentina</p>
+<!-- ================= CONTACTO ================= -->
+<section id="contacto" class="contacto">
+    <div class="contenedor">
+        <div class="contacto-caja revelar">
+            <div class="contacto-info">
+                <span class="etiqueta">Contacto</span>
+                <h2>Pedí tu presupuesto</h2>
+                <p>La forma más rápida de hablar con nosotros es por WhatsApp. También podés dejarnos tu consulta en el formulario.</p>
+                <div class="canales">
+                    <a class="canal" href="https://wa.me/541155654389?text=Hola!%20Quería%20consultarte%20por%20un%20servicio%20técnico." target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i>
+                        <div><small>WhatsApp</small><strong>+54 11 5565-4389</strong></div>
+                    </a>
+                    <a class="canal" href="https://www.instagram.com/computech.fs/" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i>
+                        <div><small>Instagram</small><strong>@computech.fs</strong></div>
+                    </a>
+                    <a class="canal" href="https://www.tiktok.com/@federicostavin" target="_blank" rel="noopener">
+                        <i class="fab fa-tiktok"></i>
+                        <div><small>TikTok</small><strong>@federicostavin</strong></div>
+                    </a>
+                </div>
+                <div class="zona"><i class="fas fa-location-dot"></i> Buenos Aires, Argentina</div>
+            </div>
+
+            <form class="formulario" id="form-contacto" name="contacto" method="POST" action="/gracias" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+                <input type="hidden" name="form-name" value="contacto">
+                <p class="oculto"><label>No completar: <input name="bot-field"></label></p>
+
+                <h3>Dejanos tu consulta</h3>
+                <p>Te respondemos a la brevedad.</p>
+
+                <div class="campos">
+                    <div class="campo">
+                        <label for="nombre">Nombre</label>
+                        <input id="nombre" name="nombre" type="text" placeholder="Tu nombre" autocomplete="name" required>
+                        <span class="msj-error">Ingresá tu nombre.</span>
+                    </div>
+                    <div class="campo">
+                        <label for="telefono">WhatsApp / Teléfono</label>
+                        <input id="telefono" name="telefono" type="tel" placeholder="11 2345-6789" autocomplete="tel" required>
+                        <span class="msj-error">Ingresá un número para contactarte.</span>
+                    </div>
+                    <div class="campo ancho">
+                        <label for="email">Email <span style="opacity:.6">(opcional)</span></label>
+                        <input id="email" name="email" type="email" placeholder="tu@email.com" autocomplete="email">
+                        <span class="msj-error">Revisá el formato del email.</span>
+                    </div>
+                    <div class="campo ancho">
+                        <label for="equipo">Tipo de equipo</label>
+                        <select id="equipo" name="equipo" required>
+                            <option value="" disabled selected>Elegí una opción</option>
+                            <option>PC de escritorio</option>
+                            <option>Notebook</option>
+                            <option>Celular</option>
+                            <option>Armado de PC nueva</option>
+                            <option>Otro</option>
+                        </select>
+                        <span class="msj-error">Elegí el tipo de equipo.</span>
+                    </div>
+                    <div class="campo ancho">
+                        <label for="mensaje">¿Qué le pasa al equipo?</label>
+                        <textarea id="mensaje" name="mensaje" placeholder="Ej: la notebook se calienta mucho y se apaga sola al jugar." required></textarea>
+                        <span class="msj-error">Contanos brevemente el problema.</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="boton">Enviar consulta <i class="fas fa-paper-plane"></i></button>
+                <div class="estado-form" role="status" aria-live="polite"></div>
+            </form>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <div class="contenedor">
+        <div class="footer-grid">
+            <a href="#inicio" class="marca">
+                <img src="logo.png" alt="" width="38" height="38">
+                COMPUTECH <span>FS</span>
+            </a>
+            <ul class="footer-links">
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proceso">Cómo trabajamos</a></li>
+                <li><a href="#preguntas">Preguntas</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <div class="redes">
+                <a href="https://www.instagram.com/computech.fs/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@federicostavin" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://wa.me/541155654389" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+        <div class="footer-base">
+            <span>&copy; <span id="anio">2026</span> CompuTech FS - Servicio Técnico Profesional</span>
+            <span>Buenos Aires, Argentina</span>
+        </div>
+    </div>
 </footer>
+
+<a href="https://wa.me/541155654389?text=Hola!%20Quería%20consultarte%20por%20un%20servicio%20técnico." class="wsp-flotante" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+    // Año automático en el footer
+    document.getElementById('anio').textContent = new Date().getFullYear();
+
+    // Menú en celulares
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('menu');
+    toggle.addEventListener('click', () => {
+        const abierto = menu.classList.toggle('abierto');
+        toggle.setAttribute('aria-expanded', abierto);
+        toggle.innerHTML = abierto ? '<i class="fas fa-xmark"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+        menu.classList.remove('abierto');
+        toggle.setAttribute('aria-expanded', false);
+        toggle.innerHTML = '<i class="fas fa-bars"></i>';
+    }));
+
+    // Las secciones aparecen al hacer scroll
+    const observador = new IntersectionObserver((entradas) => {
+        entradas.forEach((e, i) => {
+            if (e.isIntersecting) {
+                e.target.style.transitionDelay = (i * 0.08) + 's';
+                e.target.classList.add('visible');
+                observador.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.revelar').forEach(el => observador.observe(el));
+
+    // Formulario de contacto (Netlify Forms) con validación y envío sin recargar
+    const form = document.getElementById('form-contacto');
+    const estado = form.querySelector('.estado-form');
+    const boton = form.querySelector('button[type="submit"]');
+
+    function validar() {
+        let ok = true;
+        form.querySelectorAll('.campo').forEach(campo => {
+            const input = campo.querySelector('input, select, textarea');
+            const valido = input.checkValidity() && (!input.required || input.value.trim() !== '');
+            campo.classList.toggle('error', !valido);
+            if (!valido) ok = false;
+        });
+        return ok;
+    }
+
+    form.querySelectorAll('input, select, textarea').forEach(input => {
+        input.addEventListener('input', () => {
+            if (input.closest('.campo')?.classList.contains('error')) validar();
+        });
+    });
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        estado.className = 'estado-form';
+        if (!validar()) {
+            form.querySelector('.campo.error input, .campo.error select, .campo.error textarea')?.focus();
+            return;
+        }
+
+        boton.disabled = true;
+        boton.innerHTML = 'Enviando...';
+        try {
+            const respuesta = await fetch('/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams(new FormData(form)).toString()
+            });
+            if (!respuesta.ok) throw new Error();
+            form.reset();
+            estado.className = 'estado-form exito';
+            estado.textContent = '¡Gracias! Recibimos tu consulta y te vamos a contactar a la brevedad.';
+        } catch {
+            estado.className = 'estado-form fallo';
+            estado.textContent = 'No pudimos enviar la consulta. Probá de nuevo o escribinos directamente por WhatsApp.';
+        } finally {
+            boton.disabled = false;
+            boton.innerHTML = 'Enviar consulta <i class="fas fa-paper-plane"></i>';
+        }
+    });
+</script>
 
 </body>
 </html>
